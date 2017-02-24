@@ -2,11 +2,12 @@
 <html>
 	<head>
 		<title>My Pong Game</title>
+		<link rel="icon" type="image/gif/png" href="img/ball.png">
 		<script defer src="src/main.js"></script>
         <link rel="stylesheet" href="style.css" />
 	</head>
 	<body onload="init()" bgcolor = "#691A99"> 
-		<canvas id="myCanvas" width="500" height="350" style="border:1px solid #ffffff;">
+		<canvas id="myCanvas" width="500" height="350" style="border:1px solid #424242;">
 			Your browser does not support the canvas element.
 		</canvas>
 		<br />
@@ -16,5 +17,9 @@
 			<a href="index.html"><button type="button">RESTART</button></a>
 			<p> Press the ARROW-KEY-UP or ARROW-KEY-DOWN TO Navigate </p>
 		</center>
+		<audio autoplay>
+			<source src="audio/intro.wav" type="audio/wav">
+			Your browser does not support the audio element.
+		</audio>
 	</body>
 </html>

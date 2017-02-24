@@ -8,14 +8,14 @@ var score_sound = new Audio();
 score_sound.src = 'audio/clapping.mp3';
 
 // declare "global" variables
-var playing;//continue game
+var playing;  //continue game
 var ball;
-var paddle;//left paddle
-var paddle2;//right paddle
-var hit;//if ball collides with paddle
-var w, h;//width & height
-var player_score;
-var comp_score;
+var paddle; //left paddle
+var paddle2;  //right paddle
+var hit;  //if ball collides with paddle
+var w, h; //width & height
+var player_score; //records player 1(human controlled)
+var comp_score;   //records computer score
 
 // define "callback" function for animation
 window.requestFrame = (function(callback){
@@ -39,8 +39,8 @@ function animate(){
   w = c.width;
   h = c.height;
   var bg = cntxt.createRadialGradient(ball.x, ball.y+3,3,ball.x+5,ball.y,20);
-  bg.addColorStop(0, "#8ED6FF"); // light blue
-  bg.addColorStop(1, "#004CB3"); // dark blue
+  bg.addColorStop(0, "#9B26AF"); 
+  bg.addColorStop(1, "#9B26AF");
   cntxt.fillStyle=bg;
   cntxt.fillRect(0,0,c.width,c.height);
 
@@ -50,25 +50,22 @@ function animate(){
     a = (i*10) + (i*5);
     cntxt.fillRect((w/2)-2, a, 4, 10);//drawing dashed line
   }  
-//#9B26AF
-  // -----draw orange ball-------------
+
+  // -----draw  ball-------------
   cntxt.beginPath();
-  cntxt.save();  
-  cntxt.shadowBlur = 15;  
-  //cntxt.shadowColor = "white";  
+  cntxt.save(); 
   cntxt.fillStyle = "white";
   cntxt.arc(ball.x,ball.y,7.5,0,2*Math.PI);
-  cntxt.fill();
-  cntxt.restore();  
+  cntxt.fill(); 
   cntxt.closePath();
 
-  // ----draw green left paddle-----------
+  // ----draw left paddle-----------
   cntxt.beginPath();
   cntxt.fillStyle = "#68EFAD";
   cntxt.fillRect( paddle.x, paddle.y, paddle.w, paddle.h );
   cntxt.closePath();
 
-  //----Draw green right paddle----------------
+  //----Draw right paddle----------------
   cntxt.beginPath();
   cntxt.fillStyle = "#68EFAD";
   cntxt.fillRect( paddle2.x, paddle2.y, paddle2.w, paddle2.h);
@@ -76,7 +73,7 @@ function animate(){
 
   //---draw scoreboard----------------------
   var w_pos= c.width/4;
-  cntxt.fillStyle= "#9B26AF";
+  cntxt.fillStyle= "#68EFAD";
   cntxt.font= "40px Impact";
   cntxt.fillText(player_score,(w_pos),50);
   cntxt.fillText(comp_score,w_pos*3,50);     
@@ -92,6 +89,7 @@ function animate(){
     cntxt.fillText("YOU LOSE", 50, 150);
     cntxt.fillText("Game Over", 50, 200);
     playing = "false"
+    score_sound.play();
   }
   
   if( player_score >=5){
@@ -136,11 +134,12 @@ function animate(){
   //top & bottom boundary/wall
   if (( ball.y < 0 ) || ( ball.y > c.height-ball.r )){
     ball.vy = -(ball.vy);
+    wall_sound.play();
   } 
   
   //--COMP PADDLE AI------------------------------- 
   if(( ball.y > paddle2.y) && (paddle2.y< h-paddle.h)){
-    paddle2.y +=6.25;  
+    paddle2.y +=6.25;
   }
       
   if( (ball.y<paddle2.y ) && (paddle2.y>0) ){
@@ -230,7 +229,7 @@ function startPlaying(){
   animate();
 } // end of startPlaying()
 
-// ------"stop" button-----------------------------------------------------
+// ------"stop" button------------------------------------------
 function stopPlaying() {
   playing = "false";
 } // end of stopPlaying()
@@ -240,7 +239,7 @@ function init(){
 
   // get graphics context
   var c = document.getElementById( "myCanvas" );
-  var cntxt = c.getContext( "2d" );
+  var cntxt = c.getContext("2d");
 
   // save dimensions of graphics context
   w = c.width;
@@ -264,31 +263,31 @@ function init(){
   paddle.y = (h-paddle.h)/2;
   
   //initialize right paddle
-  paddle2= new Object();
-  paddle2.w= 10;
+  paddle2 = new Object();
+  paddle2.w = 10;
   paddle2.h = 60;
-  paddle2.x= w-12;
-  paddle2.y= (h-paddle2.h)/2;
+  paddle2.x = w-12;
+  paddle2.y = (h-paddle2.h)/2;
      
-  comp_score=0;
-  player_score=0;
+  comp_score = 0;
+  player_score = 0;
       
   // initialize all this
   playing = new Boolean();
   playing = "false";
   hit = new Boolean();
   hit = "false";
-  intro();//call welcome screen 
+  intro();  //call welcome screen 
   updateScore();
   wall_sound.play();
 } // end of init()
 
 //----Up/DOwn key events for Left Paddle----------------
 function keyPressed(evt){      
-  switch ( evt.keyCode ){
+  switch(evt.keyCode){
 
     case 38:  /* Up arrow was pressed */
-      if(paddle.y < 0){//check to keep paddle in boundaries
+      if(paddle.y < 0){ //check to keep paddle in boundaries
             paddle.y=0;
       }else{
         paddle.y -= 10;
@@ -302,7 +301,7 @@ function keyPressed(evt){
       paddle.y += 10;}
       break;
     }//end of switch
-    wall_sound.play();
+    player_sound.play();
 } // end of keyPressed()
 
 //---ADDING LISTENER-----------------------------------
