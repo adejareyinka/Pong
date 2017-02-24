@@ -116,8 +116,8 @@ function animate(){
 
   //position of ball increments in units of one, vx & vy =1
 
-  ball.x += 2.5*ball.vx;
-  ball.y += 2.5*ball.vy;
+  ball.x += 2.4*ball.vx;
+  ball.y += 2.4*ball.vy;
   
   //---KEEPING SCORE---------------------------
   if (ball.x < 0){
@@ -139,11 +139,11 @@ function animate(){
   
   //--COMP PADDLE AI------------------------------- 
   if(( ball.y > paddle2.y) && (paddle2.y< h-paddle.h)){
-    paddle2.y +=6.25;
+    paddle2.y += 5.3;
   }
       
   if( (ball.y<paddle2.y ) && (paddle2.y>0) ){
-    paddle2.y-=6.25;
+    paddle2.y -= 5.3;
   }
 
   // ----REQUEST NEW FRAME------------------------------
@@ -278,7 +278,6 @@ function init(){
   hit = new Boolean();
   hit = "false";
   intro();  //call welcome screen 
-  updateScore();
   wall_sound.play();
 } // end of init()
 
