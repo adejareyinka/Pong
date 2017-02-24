@@ -24,7 +24,7 @@ window.requestFrame = (function(callback){
     window.mozRequestAnimationFrame ||
     window.oRequestAnimationFrame ||
     window.msRequestAnimationFrame ||
-    function( callback){ 
+    function(callback){ 
       window.setTimeout( callback, 1000 / 600 );
     }); 
 })();
@@ -32,7 +32,7 @@ window.requestFrame = (function(callback){
 // define function that animates the objects in the canvas
 function animate(){  
 // get graphics context
-  var c = document.getElementById( "myCanvas" );
+  var c = document.getElementById("myCanvas");
   var cntxt = c.getContext( "2d" );
 
   // save dimensions of graphics context 
@@ -116,8 +116,8 @@ function animate(){
 
   //position of ball increments in units of one, vx & vy =1
 
-  ball.x += 2.4*ball.vx;
-  ball.y += 2.4*ball.vy;
+  ball.x += 1.2*ball.vx;
+  ball.y += 1.2*ball.vy;
   
   //---KEEPING SCORE---------------------------
   if (ball.x < 0){
@@ -148,7 +148,7 @@ function animate(){
 
   // ----REQUEST NEW FRAME------------------------------
   if ( playing == "true" ){
-    requestFrame( function() { animate(); } );
+    requestFrame(function() { animate(); } );
   }     
 } // end of animate()
 
@@ -225,7 +225,7 @@ function isHit() {
 function startPlaying(){
   playing = "true";
   hit = "false";
-  //startTime = new Date();
+  startTime = new Date();
   animate();
 } // end of startPlaying()
 
