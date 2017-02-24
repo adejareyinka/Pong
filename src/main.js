@@ -1,11 +1,11 @@
 var wall_sound = new Audio();
-wall_sound.src = 'click.wav';
+wall_sound.src = 'audio/click.wav';
 
 var player_sound = new Audio();
-player_sound.src = 'click2.wav';
+player_sound.src = 'audio/click2.wav';
 
 var score_sound = new Audio();
-score_sound.src = 'clapping.mp3';
+score_sound.src = 'audio/clapping.mp3';
 
 // declare "global" variables
 var playing;//continue game
@@ -55,8 +55,8 @@ function animate(){
   cntxt.beginPath();
   cntxt.save();  
   cntxt.shadowBlur = 15;  
-  cntxt.shadowColor = "rgb(255, 255, 255)";  
-  cntxt.fillStyle = "red";
+  //cntxt.shadowColor = "white";  
+  cntxt.fillStyle = "white";
   cntxt.arc(ball.x,ball.y,7.5,0,2*Math.PI);
   cntxt.fill();
   cntxt.restore();  
@@ -70,13 +70,13 @@ function animate(){
 
   //----Draw green right paddle----------------
   cntxt.beginPath();
-  cntxt.fillStyle = "#b8e139";
+  cntxt.fillStyle = "#68EFAD";
   cntxt.fillRect( paddle2.x, paddle2.y, paddle2.w, paddle2.h);
   cntxt.closePath();
 
   //---draw scoreboard----------------------
   var w_pos= c.width/4;
-  cntxt.fillStyle= "#d400de";
+  cntxt.fillStyle= "#9B26AF";
   cntxt.font= "40px Impact";
   cntxt.fillText(player_score,(w_pos),50);
   cntxt.fillText(comp_score,w_pos*3,50);     
