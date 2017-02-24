@@ -289,15 +289,15 @@ function keyPressed(evt){
       if(paddle.y < 0){ //check to keep paddle in boundaries
             paddle.y=0;
       }else{
-        paddle.y -= 10;
+        paddle.y -= 15;
       }
         break;
-
+        
     case 40:  /* Down arrow was pressed */
       if(paddle.y > h-paddle.h ){
         paddle.y=  h-paddle.h ;
     }else{ 
-      paddle.y += 10;}
+      paddle.y += 15;}
       break;
     }//end of switch
     player_sound.play();
