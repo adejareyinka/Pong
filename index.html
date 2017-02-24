@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My Pong Game</title>
+		<script defer src="src/main.js"></script>
+        <link rel="stylesheet" href="style.css" />
+	</head>
+	<body onload="init()" bgcolor = "#691A99"> 
+		<canvas id="myCanvas" width="500" height="350" style="border:1px solid #ffffff;">
+			Your browser does not support the canvas element.
+		</canvas>
+		<br />
+		<center>
+			<button type="button" onclick="startPlaying()">PLAY</button>
+			<button type="button" onclick="stopPlaying()">PAUSE</button>
+			<a href="index.html"><button type="button">RESTART</button></a>
+			<p> Press the ARROW-KEY-UP or ARROW-KEY-DOWN TO Navigate </p>
+		</center>
+	</body>
+</html>
